@@ -1,0 +1,799 @@
+{
+	"info": {
+		"_postman_id": "0f81debc-5738-4e66-b1fb-6f01c0f94de8",
+		"name": "Task",
+		"description": "Task for Devchallenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Pet",
+			"description": "",
+			"item": [
+				{
+					"name": "Step 1",
+					"description": "Add a new Pet and check if your Pet was added",
+					"item": [
+						{
+							"name": "Add pet",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "4f128ca7-7946-416e-87c7-412216e19282",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"var body = {",
+											"    \"id\": 1,",
+											"    \"category\": {",
+											"        \"id\": 11,",
+											"        \"name\": \"dog\"",
+											"    },",
+											"    \"name\": \"Jake\",",
+											"    \"photoUrls\": [",
+											"        \"photo1\",",
+											"        \"photo2\"",
+											"    ],",
+											"    \"tags\": [",
+											"        {",
+											"            \"id\": 111,",
+											"            \"name\": \"indoor\"",
+											"        }",
+											"    ],",
+											"    \"status\": \"available\"",
+											"};",
+											"pm.test(\"Body is correct\", function () {",
+											"    pm.response.to.have.body(body);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": 1,\n  \"category\": {\n    \"id\": 11,\n    \"name\": \"dog\"\n  },\n  \"name\": \"Jake\",\n  \"photoUrls\": [\n    \"photo1\",\"photo2\"\n  ],\n  \"tags\": [\n    {\n      \"id\": 111,\n      \"name\": \"indoor\"\n    }\n  ],\n  \"status\": \"available\"\n}"
+								},
+								"url": {
+									"raw": "http://petstore.swagger.io/v2/pet",
+									"protocol": "http",
+									"host": [
+										"petstore",
+										"swagger",
+										"io"
+									],
+									"path": [
+										"v2",
+										"pet"
+									]
+								},
+								"description": "Add pet"
+							},
+							"response": []
+						},
+						{
+							"name": "Find pet",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "4f128ca7-7946-416e-87c7-412216e19282",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"var body = {",
+											"    \"id\": 1,",
+											"    \"category\": {",
+											"        \"id\": 11,",
+											"        \"name\": \"dog\"",
+											"    },",
+											"    \"name\": \"Jake\",",
+											"    \"photoUrls\": [",
+											"        \"photo1\",",
+											"        \"photo2\"",
+											"    ],",
+											"    \"tags\": [",
+											"        {",
+											"            \"id\": 111,",
+											"            \"name\": \"indoor\"",
+											"        }",
+											"    ],",
+											"    \"status\": \"available\"",
+											"};",
+											"pm.test(\"Body is correct\", function () {",
+											"    pm.response.to.have.body(body);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": 1,\n  \"category\": {\n    \"id\": 11,\n    \"name\": \"dog\"\n  },\n  \"name\": \"Jake\",\n  \"photoUrls\": [\n    \"photo1\",\"photo2\"\n  ],\n  \"tags\": [\n    {\n      \"id\": 111,\n      \"name\": \"indoor\"\n    }\n  ],\n  \"status\": \"available\"\n}"
+								},
+								"url": {
+									"raw": "http://petstore.swagger.io/v2/pet/1",
+									"protocol": "http",
+									"host": [
+										"petstore",
+										"swagger",
+										"io"
+									],
+									"path": [
+										"v2",
+										"pet",
+										"1"
+									]
+								},
+								"description": "Find pet"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Step 2",
+					"description": "Change the name of your Pet and check if the name was changed",
+					"item": [
+						{
+							"name": "Rename pet",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "57b6aad8-1cb0-47a6-9252-19e31a89923d",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"pm.test(\"Pet name is changed\", function () {",
+											"    var response = pm.response.json();",
+											"    pm.expect(response.name).to.eql(\"Jimmy\");",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": 1,\n  \"category\": {\n    \"id\": 11,\n    \"name\": \"dog\"\n  },\n  \"name\": \"Jimmy\",\n  \"photoUrls\": [\n    \"photo1\",\"photo2\"\n  ],\n  \"tags\": [\n    {\n      \"id\": 111,\n      \"name\": \"indoor\"\n    }\n  ],\n  \"status\": \"available\"\n}"
+								},
+								"url": {
+									"raw": "http://petstore.swagger.io/v2/pet/",
+									"protocol": "http",
+									"host": [
+										"petstore",
+										"swagger",
+										"io"
+									],
+									"path": [
+										"v2",
+										"pet",
+										""
+									]
+								},
+								"description": "Rename pet"
+							},
+							"response": []
+						},
+						{
+							"name": "Find pet",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6c6c8e0d-2762-4801-9fea-a14c159c61fa",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"var body = {",
+											"    \"id\": 1,",
+											"    \"category\": {",
+											"        \"id\": 11,",
+											"        \"name\": \"dog\"",
+											"    },",
+											"    \"name\": \"Jimmy\",",
+											"    \"photoUrls\": [",
+											"        \"photo1\",",
+											"        \"photo2\"",
+											"    ],",
+											"    \"tags\": [",
+											"        {",
+											"            \"id\": 111,",
+											"            \"name\": \"indoor\"",
+											"        }",
+											"    ],",
+											"    \"status\": \"available\"",
+											"};",
+											"pm.test(\"Body is correct\", function () {",
+											"    pm.response.to.have.body(body);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": 1,\n  \"category\": {\n    \"id\": 11,\n    \"name\": \"dog\"\n  },\n  \"name\": \"Jake\",\n  \"photoUrls\": [\n    \"photo1\",\"photo2\"\n  ],\n  \"tags\": [\n    {\n      \"id\": 111,\n      \"name\": \"indoor\"\n    }\n  ],\n  \"status\": \"available\"\n}"
+								},
+								"url": {
+									"raw": "http://petstore.swagger.io/v2/pet/1",
+									"protocol": "http",
+									"host": [
+										"petstore",
+										"swagger",
+										"io"
+									],
+									"path": [
+										"v2",
+										"pet",
+										"1"
+									]
+								},
+								"description": "Find pet"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Step 3",
+					"description": "Delete your Pet from the list and check if the Pet was deleted",
+					"item": [
+						{
+							"name": "Delete pet",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "df2b1599-10f8-46a7-b186-5f7afaff3f33",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://petstore.swagger.io/v2/pet/1",
+									"protocol": "http",
+									"host": [
+										"petstore",
+										"swagger",
+										"io"
+									],
+									"path": [
+										"v2",
+										"pet",
+										"1"
+									]
+								},
+								"description": "Delete pet"
+							},
+							"response": []
+						},
+						{
+							"name": "Find pet",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "af1e1ff4-9cbb-4807-884d-a8ebf2544f68",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"",
+											"pm.test(\"Pet not found\", function () {",
+											"    var response = pm.response.json();",
+											"    pm.expect(response.code).to.eql(1);",
+											"    pm.expect(response.type).to.eql(\"error\");",
+											"    pm.expect(response.message).to.eql(\"Pet not found\");",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": 1,\n  \"category\": {\n    \"id\": 11,\n    \"name\": \"dog\"\n  },\n  \"name\": \"Jake\",\n  \"photoUrls\": [\n    \"photo1\",\"photo2\"\n  ],\n  \"tags\": [\n    {\n      \"id\": 111,\n      \"name\": \"indoor\"\n    }\n  ],\n  \"status\": \"available\"\n}"
+								},
+								"url": {
+									"raw": "http://petstore.swagger.io/v2/pet/1",
+									"protocol": "http",
+									"host": [
+										"petstore",
+										"swagger",
+										"io"
+									],
+									"path": [
+										"v2",
+										"pet",
+										"1"
+									]
+								},
+								"description": "Find pet"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "Store",
+			"description": "Additional task",
+			"item": [
+				{
+					"name": "Step 1",
+					"description": "Place an order for a pet",
+					"item": [
+						{
+							"name": "Add pet",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2ae09d63-2ae2-4a59-a5ad-d50b102512af",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"var body = {",
+											"  \"id\": 2,",
+											"  \"category\": {",
+											"    \"id\": 22,",
+											"    \"name\": \"cat\"",
+											"  },",
+											"  \"name\": \"Sonia\",",
+											"  \"photoUrls\": [",
+											"    \"photo1\",\"photo2\"",
+											"  ],",
+											"  \"tags\": [",
+											"    {",
+											"      \"id\": 222,",
+											"      \"name\": \"indoor\"",
+											"    }",
+											"  ],",
+											"  \"status\": \"available\"",
+											"};",
+											"pm.test(\"Body is correct\", function () {",
+											"    pm.response.to.have.body(body);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": 2,\n  \"category\": {\n    \"id\": 22,\n    \"name\": \"cat\"\n  },\n  \"name\": \"Sonia\",\n  \"photoUrls\": [\n    \"photo1\",\"photo2\"\n  ],\n  \"tags\": [\n    {\n      \"id\": 222,\n      \"name\": \"indoor\"\n    }\n  ],\n  \"status\": \"available\"\n}"
+								},
+								"url": {
+									"raw": "http://petstore.swagger.io/v2/pet",
+									"protocol": "http",
+									"host": [
+										"petstore",
+										"swagger",
+										"io"
+									],
+									"path": [
+										"v2",
+										"pet"
+									]
+								},
+								"description": "Add pet"
+							},
+							"response": []
+						},
+						{
+							"name": "Place order",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a4b7a61e-c077-4e01-950e-9172c63f07f7",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"var body = {",
+											"  \"id\": 1,",
+											"  \"petId\": 2,",
+											"  \"quantity\": 1,",
+											"  \"shipDate\": \"2018-04-13T15:12:27.783+0000\",",
+											"  \"status\": \"placed\",",
+											"  \"complete\": true",
+											"};",
+											"pm.test(\"Body is correct\", function () {",
+											"    pm.response.to.have.body(body);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": 1,\n  \"petId\": 2,\n  \"quantity\": 1,\n  \"shipDate\": \"2018-04-13T15:12:27.783Z\",\n  \"status\": \"placed\",\n  \"complete\": true\n}"
+								},
+								"url": {
+									"raw": "http://petstore.swagger.io/v2/store/order",
+									"protocol": "http",
+									"host": [
+										"petstore",
+										"swagger",
+										"io"
+									],
+									"path": [
+										"v2",
+										"store",
+										"order"
+									]
+								},
+								"description": "Place order"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Step 2",
+					"description": "Find purchase order by ID",
+					"item": [
+						{
+							"name": "Find order",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "216e71b1-a711-4642-8fce-86f4df1bbefa",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"var body = {",
+											"    \"id\": 1,",
+											"    \"petId\": 2,",
+											"    \"quantity\": 1,",
+											"    \"shipDate\": \"2018-04-13T15:12:27.783+0000\",",
+											"    \"status\": \"placed\",",
+											"    \"complete\": true",
+											"};",
+											"pm.test(\"Body is correct\", function () {",
+											"    pm.response.to.have.body(body);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": 1,\n  \"category\": {\n    \"id\": 11,\n    \"name\": \"dog\"\n  },\n  \"name\": \"Jake\",\n  \"photoUrls\": [\n    \"photo1\",\"photo2\"\n  ],\n  \"tags\": [\n    {\n      \"id\": 111,\n      \"name\": \"indoor\"\n    }\n  ],\n  \"status\": \"available\"\n}"
+								},
+								"url": {
+									"raw": "http://petstore.swagger.io/v2/store/order/1",
+									"protocol": "http",
+									"host": [
+										"petstore",
+										"swagger",
+										"io"
+									],
+									"path": [
+										"v2",
+										"store",
+										"order",
+										"1"
+									]
+								},
+								"description": "Find order"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Step 3",
+					"description": null,
+					"item": [
+						{
+							"name": "Delete order",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "df2b1599-10f8-46a7-b186-5f7afaff3f33",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://petstore.swagger.io/v2/store/order/1",
+									"protocol": "http",
+									"host": [
+										"petstore",
+										"swagger",
+										"io"
+									],
+									"path": [
+										"v2",
+										"store",
+										"order",
+										"1"
+									]
+								},
+								"description": "Delete order"
+							},
+							"response": []
+						},
+						{
+							"name": "Find order",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "85004248-02c6-4b0f-8eb0-e7cb3adf170e",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"",
+											"pm.test(\"Order not found\", function () {",
+											"    var response = pm.response.json();",
+											"    pm.expect(response.code).to.eql(1);",
+											"    pm.expect(response.type).to.eql(\"error\");",
+											"    pm.expect(response.message).to.eql(\"Order not found\");",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": 1,\n  \"category\": {\n    \"id\": 11,\n    \"name\": \"dog\"\n  },\n  \"name\": \"Jake\",\n  \"photoUrls\": [\n    \"photo1\",\"photo2\"\n  ],\n  \"tags\": [\n    {\n      \"id\": 111,\n      \"name\": \"indoor\"\n    }\n  ],\n  \"status\": \"available\"\n}"
+								},
+								"url": {
+									"raw": "http://petstore.swagger.io/v2/store/order/1",
+									"protocol": "http",
+									"host": [
+										"petstore",
+										"swagger",
+										"io"
+									],
+									"path": [
+										"v2",
+										"store",
+										"order",
+										"1"
+									]
+								},
+								"description": "Find order"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "bb699a89-c9f1-440c-9c00-d4e036dcd227",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "0fd8a676-e32d-44b9-9ea4-5445e54cb8ba",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
